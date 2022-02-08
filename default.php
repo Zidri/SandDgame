@@ -11,7 +11,6 @@
         </div>
         <?php
             require('connect.php');
-            // include('nav.php');
         ?>
         <main>
         </main>
