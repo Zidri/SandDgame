@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Start: A D-tier Adventure</title>
-        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="header">
