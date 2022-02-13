@@ -19,6 +19,9 @@
         ?>
         <main>
             main cont -> the game
+            <?php
+            // require('game.php');
+            ?>
         </main>
         <?php
             include('foot.html');
