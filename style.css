@@ -66,19 +66,6 @@ main{
     background-color: #80A1C1;
     padding: 20px;
 }
-.leftcont{
-    float: left;
-    width: 50%;
-    padding-right: 5%;
-}
-.rightcont{
-    float: right;
-    width: 45%;
-    
-}
-.clearrfloat{
-    clear: both;
-}
 .center{
     text-align: center;
     clear: both;
