@@ -15,7 +15,7 @@
         <main>
         </main>
         <?php
-            // include('foot.html');
+            include('foot.html');
         ?>
     </body>
 </html>
