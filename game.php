@@ -20,19 +20,7 @@
     // execute
     $sql_get->execute();
 
+    header("Location: songsadmin.php");
 
-    //display game text
-    echo('<div class="gametext">');
     
-    echo('</div>');
-
-    echo('
-    <form action="game.php" method="POST">
-    <table>
-        <tr>
-            <td><input type="button" name="storyid" value="'.'"</td>
-        </tr>        
-    </table>
-</form>
-    ');
 ?>

@@ -79,3 +79,12 @@ main h3{
 p{
     color: #231F20;    
 }
+
+/*Buttons*/
+.btn{
+    background-color: #1A936F;
+    padding: 5px 20px;
+}
+.btn:hover{
+    background-color: #88D498; 
+}

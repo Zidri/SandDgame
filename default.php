@@ -19,9 +19,22 @@
         ?>
         <main>
             main cont -> the game
+            <div class="gametext">
+
             <?php
-            require('game.php');
+            //display game text            
             ?>
+
+            </div>
+            <form action="game.php" method="POST">
+            <table>
+                <tr>
+                    <td>
+                        <input type="button" class="btn" name="storyid" value="Next">
+                    </td>
+                </tr>        
+            </table>
+        </form>            
         </main>
         <?php
             include('foot.html');
