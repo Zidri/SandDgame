@@ -24,7 +24,7 @@
     //display game text
     echo('<div class="gametext">');
     
-    echo('</div>'));
+    echo('</div>');
 
     echo('
     <form action="game.php" method="POST">

@@ -15,12 +15,12 @@
             <h1>Start: A D-tier Adventure</h1>
         </div>
         <?php
-            require('connect.php');
+            // require('connect.php');
         ?>
         <main>
             main cont -> the game
             <?php
-            // require('game.php');
+            require('game.php');
             ?>
         </main>
         <?php
