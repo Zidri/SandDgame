@@ -1,7 +1,7 @@
 <?php
 // will be used for all db connections
 
-$db = 'db_SandD';
+$db = 'sadta_db';
 $user = 'root';
 $pass = '';
 

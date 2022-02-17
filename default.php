@@ -15,14 +15,15 @@
             <h1>Start: A D-tier Adventure</h1>
         </div>
         <?php
-            // require('connect.php');
+            require('connect.php');
         ?>
         <main>
             main cont -> the game
             <div class="gametext">
 
             <?php
-            //display game text            
+            //display game text  
+            echo($_SESSION['curtxt']);          
             ?>
 
             </div>

@@ -18,9 +18,13 @@
     $sql_get->bindparam(':storyid',$storyid);
 
     // execute
-    $sql_get->execute();
+    $curtxt = $sql_get->execute();
 
-    header("Location: songsadmin.php");
+    //set text to session var
+    $_SESSION['curtxt'] = $curtxt;
+    echo($_SESSION['curtxt']);
+
+    //header("Location: songsadmin.php");
 
     
 ?>
