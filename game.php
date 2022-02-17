@@ -1,6 +1,13 @@
 <?php
     require('connect.php');
 
+    if(isset($_SESSION['cnt'])){
+        $_SESSION['cnt']++;
+    }
+    else{
+        $_SESSION['cnt'] = 0;
+    }
+
     //get text for game
     $sql_get = 'SELECT StoryText 
                 FROM story 
@@ -26,5 +33,26 @@
 
     //header("Location: songsadmin.php");
 
-    
+    echo('
+    <div class="gametext">
+
+    ');
+
+    //display game text  
+    echo($_SESSION['curtxt']);
+
+    echo('
+    </div>
+    <form action="game.php" method="POST">
+    <table>
+        <tr>
+            <td>
+                <input type="button" class="btn" name="next" value="Next">
+                <input type="hidden" name="storyid" value="'.$_SESSION['cnt'].'">
+            </td>
+        </tr>        
+    </table>
+</form>          
+    ');
+
 ?>
