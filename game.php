@@ -1,11 +1,11 @@
 <?php
     // require('connect.php');
 
-    if(isset($_SESSION['cnt'])){
+    if(isset($_SESSION['cnt']) && $_SESSION['cnt'] < 2){
         $_SESSION['cnt']++;
     }
     else{
-        $_SESSION['cnt'] = 0;
+        $_SESSION['cnt'] = 1;
     }
 
     if(isset($_POST['StoryID'])){
@@ -26,7 +26,7 @@
     
         //set StoryID as String
         $StoryIDStr = strval($_POST['StoryID']);
-
+        echo($StoryIDStr);
         // sanatize
         $StoryID = filter_var($StoryIDStr,FILTER_SANITIZE_STRING);
     
