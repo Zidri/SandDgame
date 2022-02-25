@@ -57,7 +57,7 @@
         <table>
             <tr>
                 <td>
-                    <input type="hidden" name="StoryID" value="'.$_SESSION['cnt'].'">
+                    <input type="hidden" name="StoryID" value="1">
                     <input type="submit" class="btn" value="Start">
                 </td>
             </tr>        
