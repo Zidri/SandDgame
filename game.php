@@ -8,31 +8,37 @@
         $_SESSION['cnt'] = 0;
     }
 
-    if(isset($_POST['storyID'])){
+    if(isset($_POST['StoryID'])){
         
     
         //get text for game
-        $sql_get = 'SELECT StoryText 
-                    FROM story 
-                    WHERE StoryID = :StoryID';
+        $sql_get = 'SELECT
+                        StoryText
+                    FROM
+                        story
+                    WHERE
+                        StoryID = :StoryID';
     
     
     
         // prepare
         $sql_get = $pdo->prepare($sql_get);
     
+        //set StoryID as String
+        $StoryIDStr = strval($_POST['StoryID']);
+
         // sanatize
-        $storyid = filter_var($_POST['storyid'],FILTER_SANITIZE_NUMBER_INT);
+        $StoryID = filter_var($StoryIDStr,FILTER_SANITIZE_STRING);
     
         // bind
-        $sql_get->bindparam(':storyid',$storyid);
+        $sql_get->bindparam(':StoryID',$StoryID);
     
         // execute
         $curtxt = $sql_get->execute();
     
         //set text to session var
         $_SESSION['curtxt'] = $curtxt;
-        echo($_SESSION['curtxt']);
+        // echo($_SESSION['curtxt']);
     
         //header("Location: songsadmin.php");
     
@@ -44,7 +50,20 @@
         //display game text  
         echo($_SESSION['curtxt']);
 
-        
+        echo('
+        </div>
+        <form action="default.php" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <!--<input type="submit" class="btn" name="next" value="Next">-->
+                    <input type="hidden" name="StoryID" value="'.$_SESSION['cnt'].'">
+                    <input type="submit" class="btn" value="Next">
+                </td>
+            </tr>        
+        </table>
+    </form>          
+        ');
     }
     else{
         echo('
@@ -54,7 +73,7 @@
             <tr>
                 <td>
                     <!--<input type="submit" class="btn" name="next" value="Next">-->
-                    <input type="hidden" name="storyid" value="'.$_SESSION['cnt'].'">
+                    <input type="hidden" name="StoryID" value="'.$_SESSION['cnt'].'">
                     <input type="submit" class="btn" value="Next">
                 </td>
             </tr>        

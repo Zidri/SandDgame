@@ -18,25 +18,25 @@
             require('connect.php');
         ?>
         <main>
-            main cont -> the game
-            <div class="gametext">
+            <!-- main cont -> the game -->
+            <!-- <div class="gametext"> -->
 
             <?php
             //display game text  
-            if(isset($_SESSION['cuttxt'])){
-                echo($_SESSION['curtxt']); 
-            }else{
+            // if(isset($_SESSION['cuttxt'])){
+            //     echo($_SESSION['curtxt']); 
+            // }else{
                 require("game.php");
-            }
+            // }
                      
             ?>
 
-            </div>
+            <!-- </div> -->
             <!-- <form action="game.php" method="POST">
             <table>
                 <tr>
                     <td>
-                        <input type="button" class="btn" name="storyid" value="Next">
+                        <input type="button" class="btn" name="StoryID" value="Next">
                     </td>
                 </tr>        
             </table>
