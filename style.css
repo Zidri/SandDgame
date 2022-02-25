@@ -20,10 +20,10 @@ footer{
     font-family: 'Red Hat Mono', monospace;
 }
 footer a{
-    color: #420217;
+    color: #D95D39;
 }
 footer a:hover{
-    color: #D95D39;
+    color: #420217;
 }
 /* Nav Bar */
 nav{
