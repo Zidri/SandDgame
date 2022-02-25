@@ -18,41 +18,23 @@
                     FROM
                         story
                     WHERE
-                        StoryID = :StoryID';
+                        StoryID = '.$_POST['StoryID'];
     
     
+        
+        $r = $pdo->query($sql_get);
+        $curtxt = $r->fetch();
+
+        $_SESSION['curtxt'] = $curtxt[0];
     
-        // prepare
-        $sql_get = $pdo->prepare($sql_get);
-    
-        //set StoryID as String
-        // $StoryIDStr = strval($_POST['StoryID']);
-
-        // sanatize
-        $StoryID = filter_var($_POST['StoryID'],FILTER_SANITIZE_STRING);
-
-        // bind
-        $sql_get->bindparam(':StoryID',$StoryID);
-
-        // execute
-        // $r = $pdo->query($sql_get);
-        $r = $sql_get->execute();
-        echo($r);
-        // $curtxt = $r->fetch();
-        // $curtxt = $r->fetch();
-        // echo("story >> ".$curtxt['StoryText']);
-
-        //set text to session var
-        // $_SESSION['curtxt'] = $curtxt;
-        // echo($_SESSION['curtxt']);
     
         echo('<div class="gametext">');
     
         //display game text  
-        if($StoryID != 1){
-            echo(">> ".$_SESSION['lastcurtxt']."<br>");
+        if($_POST['StoryID'] != 1){
+            echo(">> ".$_SESSION['lastcurtxt']."<br><br>");
         }
-        echo($_SESSION['curtxt']);
+        echo(">> ".$_SESSION['curtxt']."<br><br>");
 
         echo('
         </div>
