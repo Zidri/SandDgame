@@ -9,7 +9,9 @@
     }
 
     if(isset($_POST['StoryID'])){
-        
+        if($_POST['StoryID'] != 1){
+            $_SESSION['lastcurtxt'] = $_SESSION['curtxt'];
+        }
     
         //get text for game
         $sql_get = 'SELECT
@@ -26,16 +28,17 @@
     
         //set StoryID as String
         $StoryIDStr = strval($_POST['StoryID']);
-        echo($StoryIDStr);
+
         // sanatize
         $StoryID = filter_var($StoryIDStr,FILTER_SANITIZE_STRING);
-    
+
         // bind
         $sql_get->bindparam(':StoryID',$StoryID);
-    
+
         // execute
         $curtxt = $sql_get->execute();
-    
+        echo("id >> ".$StoryID);
+
         //set text to session var
         $_SESSION['curtxt'] = $curtxt;
         // echo($_SESSION['curtxt']);
@@ -43,11 +46,13 @@
         //header("Location: songsadmin.php");
     
         echo('
-        <div class="gametext">
-    
+        <div class="gametext">    
         ');
     
         //display game text  
+        if($StoryID != 1){
+            echo(">> ".$_SESSION['lastcurtxt']."<br>");
+        }
         echo($_SESSION['curtxt']);
 
         echo('
