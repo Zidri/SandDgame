@@ -1,6 +1,5 @@
 /*<link rel="stylesheet" href="style.css">*/
-/*https://coolors.co/ffeedb-80a1c1-37423d-d95d39-420217-545f66 */
-
+/* https://coolors.co/ffeedb-80a1c1-37423d-9b7e46-d95d39-420217-545f66 */
 /* Heading */
 .header{
     padding: 1px;
@@ -78,6 +77,12 @@ main h3{
 }
 p{
     color: #231F20;    
+}
+
+.game{
+    width: 90%;
+    background-color: #37423D;
+    color: #9B7E46;
 }
 
 /*Buttons*/

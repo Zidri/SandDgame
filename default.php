@@ -19,7 +19,7 @@
         ?>
         <main>
             <!-- main cont -> the game -->
-            <!-- <div class="gametext"> -->
+            <div class="game">
 
             <?php
             //display game text  
@@ -31,7 +31,7 @@
                      
             ?>
 
-            <!-- </div> -->
+            </div>
             <!-- <form action="game.php" method="POST">
             <table>
                 <tr>

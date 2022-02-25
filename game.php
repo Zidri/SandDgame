@@ -1,5 +1,4 @@
 <?php
-    // require('connect.php');
 
     if(isset($_SESSION['cnt']) && $_SESSION['cnt'] < 2){
         $_SESSION['cnt']++;
@@ -27,27 +26,27 @@
         $sql_get = $pdo->prepare($sql_get);
     
         //set StoryID as String
-        $StoryIDStr = strval($_POST['StoryID']);
+        // $StoryIDStr = strval($_POST['StoryID']);
 
         // sanatize
-        $StoryID = filter_var($StoryIDStr,FILTER_SANITIZE_STRING);
+        $StoryID = filter_var($_POST['StoryID'],FILTER_SANITIZE_STRING);
 
         // bind
         $sql_get->bindparam(':StoryID',$StoryID);
 
         // execute
-        $curtxt = $sql_get->execute();
-        echo("id >> ".$StoryID);
+        // $r = $pdo->query($sql_get);
+        $r = $sql_get->execute();
+        echo($r);
+        // $curtxt = $r->fetch();
+        // $curtxt = $r->fetch();
+        // echo("story >> ".$curtxt['StoryText']);
 
         //set text to session var
-        $_SESSION['curtxt'] = $curtxt;
+        // $_SESSION['curtxt'] = $curtxt;
         // echo($_SESSION['curtxt']);
     
-        //header("Location: songsadmin.php");
-    
-        echo('
-        <div class="gametext">    
-        ');
+        echo('<div class="gametext">');
     
         //display game text  
         if($StoryID != 1){
@@ -61,7 +60,6 @@
         <table>
             <tr>
                 <td>
-                    <!--<input type="submit" class="btn" name="next" value="Next">-->
                     <input type="hidden" name="StoryID" value="'.$_SESSION['cnt'].'">
                     <input type="submit" class="btn" value="Next">
                 </td>
@@ -77,9 +75,8 @@
         <table>
             <tr>
                 <td>
-                    <!--<input type="submit" class="btn" name="next" value="Next">-->
                     <input type="hidden" name="StoryID" value="'.$_SESSION['cnt'].'">
-                    <input type="submit" class="btn" value="Next">
+                    <input type="submit" class="btn" value="Start">
                 </td>
             </tr>        
         </table>
