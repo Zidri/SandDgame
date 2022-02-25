@@ -28,7 +28,7 @@
         $_SESSION['curtxt'] = $curtxt[0];
     
     
-        echo('<div class="gametext">');
+        echo('<div class="gamedisp"><div class="gametext">');
     
         //display game text  
         if($_POST['StoryID'] != 1){
@@ -47,7 +47,8 @@
                 </td>
             </tr>        
         </table>
-    </form>          
+    </form>
+    </div>          
         ');
     }
     else{
@@ -62,7 +63,8 @@
                 </td>
             </tr>        
         </table>
-    </form>          
+    </form>    
+    </div>      
         ');
     }
 
