@@ -23,11 +23,16 @@
 
             <?php
             //display game text  
-            echo($_SESSION['curtxt']);          
+            if(isset($_SESSION['cuttxt'])){
+                echo($_SESSION['curtxt']); 
+            }else{
+                require("game.php");
+            }
+                     
             ?>
 
             </div>
-            <form action="game.php" method="POST">
+            <!-- <form action="game.php" method="POST">
             <table>
                 <tr>
                     <td>
@@ -35,7 +40,7 @@
                     </td>
                 </tr>        
             </table>
-        </form>            
+        </form>             -->
         </main>
         <?php
             include('foot.html');
