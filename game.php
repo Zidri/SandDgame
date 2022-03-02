@@ -1,28 +1,62 @@
 <?php
 
-    if(isset($_SESSION['cnt']) && $_SESSION['cnt'] < 2){
-        $_SESSION['cnt']++;
-    }
-    else{
-        $_SESSION['cnt'] = 1;
-    }
-
     if(isset($_POST['StoryID'])){
-        if($_POST['StoryID'] != 1){
+        $IDar = str_split($_POST['StoryID']);
+        $_SESSION['cnt'] = intval($IDar[1]);
+
+        if($_SESSION['cnt']<3){
+            $_SESSION['cnt']++;
+        }
+        else{
+            $_SESSION['cnt'] = 1;
+        }
+
+        $_SESSION['alpha'] = $IDar[0];
+    }
+    
+    if(isset($_POST['StoryID'])){
+        echo($_POST['StoryID']);
+        if($_POST['StoryID'] != 'A1'){
             $_SESSION['lastcurtxt'] = $_SESSION['curtxt'];
         }
     
+        //get choices for game
+        $sql_getchoice = 'SELECT
+                        Options, StoryID, ChoiceStoryID
+                    FROM
+                        choices
+                    WHERE
+                        StoryID = "'.$_POST['StoryID'].'"';
+    
+        $r = $pdo->query($sql_getchoice);
+
+        $choice = $r->fetch();
+        
+        //pull all options not just first
+
+        print_r($choice);
+
+        // if(!empty($choice) && isset($choice)){
+            // $choicetxt = $choice[0];
+            // $choicepnt = $choice[2];
+
+            // for($i = 0; $i < count($choice); $i++){
+                // echo($choice[1][0]);
+            // }
+        // }
+        
+    
         //get text for game
-        $sql_get = 'SELECT
+        $sql_gettxt = 'SELECT
                         StoryText
                     FROM
                         story
                     WHERE
-                        StoryID = '.$_POST['StoryID'];
+                        StoryID = "'.$_POST['StoryID'].'"';
     
     
         
-        $r = $pdo->query($sql_get);
+        $r = $pdo->query($sql_gettxt);
         $curtxt = $r->fetch();
 
         $_SESSION['curtxt'] = $curtxt[0];
@@ -31,25 +65,50 @@
         echo('<div class="gamedisp"><div class="gametext">');
     
         //display game text  
-        if($_POST['StoryID'] != 1){
+        if($_POST['StoryID'] != 'A1'){
             echo(">> ".$_SESSION['lastcurtxt']."<br><br>");
         }
         echo(">> ".$_SESSION['curtxt']."<br><br>");
-
+        
+        if(isset($choicepnt)){
+            
         echo('
-        </div>
-        <form action="default.php" method="POST">
-        <table>
-            <tr>
-                <td>
-                    <input type="hidden" name="StoryID" value="'.$_SESSION['cnt'].'">
-                    <input type="submit" class="btn" value="Next">
-                </td>
-            </tr>        
-        </table>
-    </form>
-    </div>          
+            </div>
+            <form action="default.php" method="POST">
+            <table>
+                <tr>');
+                    // for(int i = 0; i < $choicenum; i++){
+                        //print multiple option buttons
+                        echo('<td>
+                        <input type="hidden" name="StoryID" value="'.$choicepnt.'">
+                        <input type="submit" class="btn" value="'.$choicetxt.'">
+                        </td>');
+                    // }                   
+
+                echo('</tr>        
+            </table>
+            </form>
+            </div>          
         ');
+        }
+        else{
+            echo('
+            </div>
+            <form action="default.php" method="POST">
+            <table>
+                <tr>
+                    <td>
+                        <input type="hidden" name="StoryID" value="'.$_SESSION['alpha'].$_SESSION['cnt'].'">
+                        <input type="submit" class="btn" value="Next">
+                    </td>
+                </tr>        
+            </table>
+            </form>
+            </div>          
+        ');
+        }
+        
+
     }
     else{
         echo('
@@ -58,7 +117,7 @@
         <table>
             <tr>
                 <td>
-                    <input type="hidden" name="StoryID" value="1">
+                    <input type="hidden" name="StoryID" value="A1">
                     <input type="submit" class="btn" value="Start">
                 </td>
             </tr>        
