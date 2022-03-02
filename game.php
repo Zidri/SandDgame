@@ -36,19 +36,19 @@
 
         print_r($choice);
 
-        // if(!empty($choice) && isset($choice)){
-            // $choicetxt = $choice[0];
-            // $choicepnt = $choice[2];
+        if(!empty($choice) && isset($choice)){
+            $choicetxt = $choice[0];
+            $choicepnt = $choice[2];
 
             // for($i = 0; $i < count($choice); $i++){
                 // echo($choice[1][0]);
             // }
-        // }
+        }
         
     
         //get text for game
         $sql_gettxt = 'SELECT
-                        StoryText
+                        StoryText,StoryEnd
                     FROM
                         story
                     WHERE
@@ -57,9 +57,10 @@
     
         
         $r = $pdo->query($sql_gettxt);
-        $curtxt = $r->fetch();
+        $story = $r->fetch();
 
-        $_SESSION['curtxt'] = $curtxt[0];
+        $_SESSION['curtxt'] = $story[0];
+        $_SESSION['end'] = $story[1];
     
     
         echo('<div class="gamedisp"><div class="gametext">');
@@ -91,7 +92,7 @@
             </div>          
         ');
         }
-        else{
+        else if($_SESSION['end'] != 1){
             echo('
             </div>
             <form action="default.php" method="POST">
@@ -105,6 +106,22 @@
             </table>
             </form>
             </div>          
+        ');
+        }
+        else{
+            echo('
+            </div>
+            <form action="default.php" method="POST">
+            <table>
+                <tr>
+                    <td>
+                        <input type="hidden" name="StoryID" value="A1">
+                        <input type="submit" class="btn" value="Restart">
+                    </td>
+                </tr>        
+            </table>
+        </form>    
+        </div>      
         ');
         }
         
