@@ -81,6 +81,8 @@ p{
 
 .gametext{
     width: 90%;
+    min-height: 400px;
+    padding: 5%;
     background-color: #37423D;
     color: #9B7E46;
 }
