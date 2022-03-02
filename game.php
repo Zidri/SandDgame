@@ -15,9 +15,16 @@
     }
     
     if(isset($_POST['StoryID'])){
-        echo($_POST['StoryID']);
+        // echo($_POST['StoryID']);
         if($_POST['StoryID'] != 'A1'){
+            if(isset( $_SESSION['lastcurtxt'])){
+                $_SESSION['pastcurtxt'] = $_SESSION['lastcurtxt'];
+            }
             $_SESSION['lastcurtxt'] = $_SESSION['curtxt'];
+        }
+        else{
+            unset($_SESSION['pastcurtxt']);
+            unset($_SESSION['lastcurtxt']);
         }
     
         //get choices for game
@@ -34,7 +41,7 @@
         
         //pull all options not just first
 
-        print_r($choice);
+        // print_r($choice);
 
         if(!empty($choice) && isset($choice)){
             $choicetxt = $choice[0];
@@ -66,7 +73,10 @@
         echo('<div class="gamedisp"><div class="gametext">');
     
         //display game text  
-        if($_POST['StoryID'] != 'A1'){
+        if(isset($_SESSION['lastcurtxt'])){
+            if(isset($_SESSION['pastcurtxt'])){
+                echo(">> ".$_SESSION['pastcurtxt']."<br><br>");
+            }
             echo(">> ".$_SESSION['lastcurtxt']."<br><br>");
         }
         echo(">> ".$_SESSION['curtxt']."<br><br>");
