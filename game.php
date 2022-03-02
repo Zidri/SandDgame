@@ -14,19 +14,22 @@
         $_SESSION['alpha'] = $IDar[0];
     }
     
-    if(isset($_POST['StoryID'])){
+    if(isset($_POST['StoryID'])){        
         // echo($_POST['StoryID']);
-        if($_POST['StoryID'] != 'A1'){
+        if($_POST['StoryID'] != 'A1'){            
             if(isset( $_SESSION['lastcurtxt'])){
                 $_SESSION['pastcurtxt'] = $_SESSION['lastcurtxt'];
+                
             }
-            $_SESSION['lastcurtxt'] = $_SESSION['curtxt'];
+            $_SESSION['lastcurtxt'] = $_SESSION['curtxt'];            
         }
         else{
             unset($_SESSION['pastcurtxt']);
             unset($_SESSION['lastcurtxt']);
         }
     
+        
+
         //get choices for game
         $sql_getchoice = 'SELECT
                         Options, StoryID, ChoiceStoryID
@@ -85,6 +88,7 @@
             
         echo('
             </div>
+            <div  id="gamebtn"> 
             <form action="default.php" method="POST">
             <table>
                 <tr>');
@@ -99,12 +103,14 @@
                 echo('</tr>        
             </table>
             </form>
-            </div>          
+            </div>  
+            </div>        
         ');
         }
         else if($_SESSION['end'] != 1){
             echo('
-            </div>
+            </div>   
+            <div  id="gamebtn">         
             <form action="default.php" method="POST">
             <table>
                 <tr>
@@ -114,13 +120,14 @@
                     </td>
                 </tr>        
             </table>
-            </form>
-            </div>          
+            </form>    
+            </div>   
         ');
         }
         else{
             echo('
             </div>
+            <div  id="gamebtn"> 
             <form action="default.php" method="POST">
             <table>
                 <tr>
@@ -131,7 +138,8 @@
                 </tr>        
             </table>
         </form>    
-        </div>      
+        </div>  
+        </div>     
         ');
         }
         
@@ -140,6 +148,7 @@
     else{
         echo('
         </div>
+        <div  id="gamebtn">
         <form action="default.php" method="POST">
         <table>
             <tr>
@@ -150,7 +159,8 @@
             </tr>        
         </table>
     </form>    
-    </div>      
+    </div>     
+    </div> 
         ');
     }
 

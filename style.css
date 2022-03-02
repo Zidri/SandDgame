@@ -1,5 +1,6 @@
 /*<link rel="stylesheet" href="style.css">*/
 /* https://coolors.co/ffeedb-80a1c1-37423d-9b7e46-d95d39-420217-545f66 */
+
 /* Heading */
 .header{
     padding: 1px;
@@ -84,11 +85,11 @@ p{
     min-height: 400px;
     padding: 5%;
     background-color: #37423D;
-    color: #9B7E46;
+    color: #7BAE7F;
 }
 
 /*Buttons*/
-#centerbtn {
+#gamebtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,7 +97,7 @@ p{
   }
 
 .btn{
-    background-color: #1A936F;
+    background-color: #7BAE7F;
     padding: 5px 20px;
 }
 .btn:hover{
