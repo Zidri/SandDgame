@@ -92,7 +92,7 @@
                         //print multiple option buttons
                         echo('<td>
                         <input type="hidden" name="StoryID" value="'.$choicepnt.'">
-                        <input type="submit" class="btn" value="'.$choicetxt.'">
+                        <input type="submit" class="btn" id="centerbtn" value="'.$choicetxt.'">
                         </td>');
                     // }                   
 
