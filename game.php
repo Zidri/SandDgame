@@ -16,7 +16,7 @@
         $_SESSION['alpha'] = $IDar[0];
 
         //reset cnt at 3 -> production only
-        if($_SESSION['cnt']<3){
+        if(isset($_SESSION['cnt'])/*$_SESSION['cnt']<3*/){
             $_SESSION['cnt']++;
         }
         else{
