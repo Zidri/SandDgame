@@ -93,7 +93,7 @@
             echo(">> ".$_SESSION['lastcurtxt']."<br><br>");
         }
         //display current game text  
-        echo(">> ".$_SESSION['curtxt']."<br><br>");
+        echo('<div id = "newtxt">>> '.$_SESSION["curtxt"].'</div><br><br>');
         
         //check if options exist
         if(!empty($optcnt)){
