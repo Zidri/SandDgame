@@ -1,5 +1,5 @@
 /*<link rel="stylesheet" href="style.css">*/
-/* https://coolors.co/ffeedb-80a1c1-37423d-7bae7f-d95d39-420217-545f66 */
+/* https://coolors.co/ffeedb-80a1c1-37423d-7bae7f-ea7317-d95d39-420217-545f66 */
 
 /* Heading */
 .header{
@@ -86,6 +86,10 @@ p{
     padding: 5%;
     background-color: #37423D;
     color: #7BAE7F;
+}
+
+.newtxt{
+    color: #EA7317;
 }
 
 /*Buttons*/
