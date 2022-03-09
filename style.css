@@ -88,8 +88,8 @@ p{
     color: #7BAE7F;
 }
 
-.newtxt{
-    color: #EA7317;
+#newtxt{
+    color: #EA7317 !important;
 }
 
 /*Buttons*/
