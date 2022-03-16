@@ -172,7 +172,7 @@
             <tr>
                 <td>
                     <input type="hidden" name="StoryID" value="A1">
-                    <input type="submit" class="btn" value="Start">
+                    <input type="submit" class="btn" id="Centerbtn" value="Start">
                 </td>
             </tr>        
         </table>
