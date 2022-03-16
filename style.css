@@ -65,6 +65,7 @@ body{
 main{
     background-color: #80A1C1;
     padding: 20px;
+    min-height: 500px;
 }
 .center{
     text-align: center;
