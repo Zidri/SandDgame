@@ -28,6 +28,8 @@
     
     
     if(isset($_POST['StoryID'])){    
+        //show current ID
+        echo($_POST[$StoryID]);
         //set prev texts so user can still view them
         if($_POST['StoryID'] != 'A1'){            
             if(isset( $_SESSION['lastcurtxt'])){
@@ -84,8 +86,6 @@
     
         echo('<div class="gamedisp"><div class="gametext">');
     
-        //show current ID
-        echo($_POST[$StoryID]);
         
         //display past text if possible
         if(isset($_SESSION['lastcurtxt'])){
