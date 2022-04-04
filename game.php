@@ -84,6 +84,8 @@
     
         echo('<div class="gamedisp"><div class="gametext">');
     
+        //show current ID
+        echo($_POST[$StoryID]);
         
         //display past text if possible
         if(isset($_SESSION['lastcurtxt'])){
