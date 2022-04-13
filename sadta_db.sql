@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2022 at 07:32 PM
+-- Generation Time: Apr 13, 2022 at 09:30 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -44,7 +44,7 @@ CREATE TABLE `choices` (
 INSERT INTO `choices` (`ChoiceID`, `Options`, `StoryID`, `ChoiceStoryID`) VALUES
 (1, 'Left', 'A2', 'A3'),
 (2, 'Right', 'A2', 'I1'),
-(3, 'Straight', 'A2', '0'),
+(3, 'Straight', 'A2', 'J1'),
 (5, 'Climb Gate', 'A3', 'C1'),
 (6, 'Turn Around', 'A3', 'B1'),
 (9, 'Return to Fight', 'C4', 'C5'),
@@ -63,7 +63,17 @@ INSERT INTO `choices` (`ChoiceID`, `Options`, `StoryID`, `ChoiceStoryID`) VALUES
 (22, 'Exaggerate Report', 'H2', 'H3'),
 (23, 'Stick to Truth', 'H2', 'H22'),
 (24, 'Check on Margret and Dave', 'H6', 'H7'),
-(25, 'Not that guilty, go home', 'H6', '0');
+(25, 'Not that guilty, go home', 'H6', '0'),
+(26, 'Check Flowers', 'J1', '0'),
+(27, 'Check Counter', 'J1', '0'),
+(28, 'Go to Back Room', 'J1', '0'),
+(29, 'Back Outside', 'J1', 'J2'),
+(30, 'Back Outside', 'K2', 'K3'),
+(31, 'Stay in Shop', 'K2', '0'),
+(32, 'Use Door', 'K3', 'J2'),
+(33, 'Use Window', 'K3', 'K4'),
+(34, 'Talk to Person', 'K7', 'K8'),
+(35, 'Keep Wandering', 'K7', 'L1');
 
 -- --------------------------------------------------------
 
@@ -87,7 +97,7 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('A3', 'Morgan runs into the alley. Looking around they see a large dumpster on the left, some cardboard and scraps to the right, and straight ahead is a gate that blocks their path. Outside the alley is a loud crashing sound as other heroes arrive to fight Complex.', 0),
 ('B1', 'Morgan leaves the alley and sees Complex fighting Dave Dogers and Morgan’s sister, Margret. In the distance the Fairness Association’s jet is approaching, so that’s where Chad got to. Morgan is called into the fray and joins the fight against Complex. They’re badly injured after a stray balcony collapses on them. They aren’t noticed until the fight ends and are removed to the Fairness Association’s medical bay.\r\n', 0),
 ('B2', 'Morgan is bedridden for several months and continues to be Chad’s sidekick.', 0),
-('B3', '<strong>Morgan remains a sidekick: </strong>Eh, could be worse… I guess? maybe?', 1),
+('B3', '<strong>Eh, could be worse… I guess? maybe?: Morgan remains a sidekick</strong>', 1),
 ('C1', 'Morgan climbs the dumpster and moves to jump part-way up the gate. Before they can push off, the lid gives way under their weight and they fall into the trash. Now covered in garbage, they climb out of the dumpster and push off the edge so they can reach the top of the gate. They make it this time and work their way over the gate. Just as they reach the other side a stray laser shoots down the alley. It doesn’t hit Morgan, but it does startle them into losing their footing, and they fall to the ground. Sore and covered in garbage, they make their way back to Chad’s base.', 0),
 ('C2', 'Morgan walks into the base to find that, not only had Chad left them at the fight, but while they were falling in the garbage and stinking up the taxi on the way here, he had not only returned and received medical help, but also sent the rest of his team, The Fairness Association, to fight Complex completely forgetting Morgan in the process.', 0),
 ('C3', 'Chad: “Oh hey Morgan! Margret just left with the others to finish the fight, you can still catch them if you hurry!”', 0),
@@ -142,7 +152,35 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('I1', 'Morgan runs towards the main road, unfortunately, that\'s the same direction as the laser.', 0),
 ('I2', 'Morgan is hit with the laser, and since Chad left without them there\'s no one to help.', 0),
 ('I3', 'Morgan dies in the fight', 0),
-('I4', '<strong>Oh, dang. Guess they\'re dead now, huh.</strong>', 1);
+('I4', '<strong>Oh, dang. Guess they\'re dead now, huh.</strong>', 1),
+('J1', 'Morgan ran straight towards the flower shop and made it inside before the villain noticed that they hadn’t escaped with Chad. Looking around, Morgan can see several displays of flowers, a counter with a register near the back, and behind the counter a curtain hanging in a doorway that seemed to lead to a back room.', 0),
+('J2', 'Morgan leaves the shop and sees Complex fighting Dave Dogers and Morgan’s sister, Margret. In the distance the Fairness Association’s jet is approaching, so that’s where Chad got to. Morgan is called into the fray and joins the fight against Complex. They’re badly injured after a stray balcony collapses on them. They aren’t noticed until the fight ends and are removed to the Fairness Association’s medical bay.', 0),
+('J3', 'Send to B2', 0),
+('K1', 'There are all kinds of flowers, but Morgan only really recognizes the roses. There is a really pretty red flower with petals that seemed to spread and curl downwards that Morgan really liked. It had thin spidery bits that formed a kind of bowl shape and was probably the prettiest flower they had ever seen. Morgan couldn’t resist grabbing one.', 0),
+('K10', 'The person looks at Morgan for a second, before replying, “I don’t believe so, and that’s the worst pickup line I’ve ever heard. What next? Are you going to tell me you must have seen me in your dreams?”', 0),
+('K11', 'A bit upset at the rudeness of the apparent stranger, Morgan replies, “I wasn’t but now that I’ve gotten a better look I think you’re right, you look just like a monster from my nightmares.”', 0),
+('K12', 'Surprisingly the stranger laughs, “That sounds about right. So what did you need, if not a date?”', 0),
+('K13', '“Well your name would be a good start, but if you’re offering I won’t say no, I’m Morgan,” Morgan replies.', 0),
+('K14', '“Alex, and sure, why not? Got your phone on you?”', 0),
+('K15', 'You hand Alex your phone, and they put their number in. When Morgan goes to put it away again, they feel the flower in their pocket.', 0),
+('K16', '“Here, it’s almost as pretty as you,” Morgan says, handing Alex the flower with a smile.', 0),
+('K17', 'Alex blushes but accepts the flower.', 0),
+('K18', 'Morgan and Alex talk for a bit before Alex continues on their way home. Morgan stands there for a minute before remembering that they have their phone and can just get directions home.', 0),
+('K19', 'Following the directions from their phone, Morgan arrives home and goes to sleep off their concussion, thinking about their upcoming date with Alex.', 0),
+('K2', 'The sounds of the fight have died down, and Morgan considers going back outside and seeing if Complex has left yet.', 0),
+('K20', '<strong>Well, this could get complex: Morgan and Alex have a nice date, where Alex convinces Morgan they deserve to be treated better and Morgan decides that Alex is too much fun to not go on another date with.</strong>', 0),
+('K3', 'Morgan decides to go outside', 0),
+('K4', 'Morgan sees a window leading to the side of the shop, they try to jump through it, but in their haste forget to open it and end up knocking their head against the glass. It doesn’t break, but they do feel a bit dizzy.', 0),
+('K5', 'Morgan opens the window and climbs out.\r\nThey’re in a side street, and the sounds of fighting are picking up again, but Morgan knows better than to try and fight with a concussion.', 0),
+('K6', 'They leave in the direction of home but get turned around trying to avoid the fight and subsequent damage.', 0),
+('K7', 'After what could be a few minutes or maybe several hours (don’t ask them, they have a concussion), Morgan sees someone that looks pretty familiar. They can’t place where they know the person from, but they definitely recognize them.', 0),
+('K8', 'Morgan walks up to the person.', 0),
+('K9', '“Hey, I’m sorry, but you look really familiar, do I know you?”', 0),
+('L1', 'Morgan never does find their way back home and ends up sleeping in an alley, not too far from the fight. The following morning they make their way home with a clearer head. ', 0),
+('L2', 'On the way home, feeling sick of being forgotten after fights and getting injured, Morgan decides to quit being a sidekick.', 0),
+('L3', '<strong>Ever heard of a good landlord?: They think about how many people lose their homes in villain fights and have to sleep outside like they did last night.</strong>', 1),
+('L4', 'Thinking of the card they have for the flower shop, they consider giving them a call and seeing if they need employees after things from the fight are repaired.', 0),
+('L5', '<strong>Time to take stalk of your life: Morgan arrives home with a plan and gets a job at a flower shop.</strong>', 1);
 
 --
 -- Indexes for dumped tables
@@ -168,7 +206,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT for table `choices`
 --
 ALTER TABLE `choices`
-  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

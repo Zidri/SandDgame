@@ -5,11 +5,16 @@
 
         // echo("ID -> ".$_POST['StoryID']."<br>");
 
+        //send to B2 after J2
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "J3"){
+            $_POST['StoryID'] = "B2";           
+        }
+
         //split posted ID by chars
         $IDar = str_split($_POST['StoryID']);
 
         // print_r($IDar);
-        
+
         //set cnt to posted ID num
         $_SESSION['cnt'] = intval($IDar[1]);
         //set alpha using posted ID letter
@@ -44,8 +49,6 @@
             unset($_SESSION['pastcurtxt']);
             unset($_SESSION['lastcurtxt']);
         }
-    
-        
 
         //get choices for game
         $sql_getchoice = 'SELECT
@@ -64,7 +67,7 @@
                 $options[$optcnt] = $choice;
                 // echo("<br>".$optcnt."->".$options[$optcnt][2]."<br>");                
                 $optcnt++;         
-            }       
+            }  
     
         //get text for game
         $sql_gettxt = 'SELECT
@@ -146,6 +149,8 @@
         }
         //show restart button if ending
         else{
+            unset($_SESSION['PastID']);
+            unset($_SESSION['StoryID']);
             echo('
             </div>
             <div  id="gamebtn"> 
