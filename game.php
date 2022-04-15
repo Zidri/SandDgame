@@ -10,6 +10,46 @@
             $_POST['StoryID'] = "B2";           
         }
 
+        //flower shop count
+        if( $_POST['StoryID'] == 'M1' || 
+            $_POST['StoryID'] == 'N2' || 
+            $_POST['StoryID'] == 'N4' || 
+            $_POST['StoryID'] == 'N3' || 
+            $_POST['StoryID'] == 'N5'){
+
+            if(isset($_SESSION['flowerCnt'])){
+                if($_SESSION['flowerCnt'] > 6){
+                $_SESSION['flowerCnt']++;
+            }
+            else{
+                $_POST['StoryID'] = "";  //send to ending
+            }
+            }
+            else{
+                $_SESSION['flowerCnt'] = 1;
+            }
+        }
+
+        //set haveCard? bool
+        if($_POST['StoryID'] == 'N2' || $_POST['StoryID'] == 'N5' ){
+            $_SESSION['haveCard'] = true;
+        }
+
+        //set haveKey? bool
+        if($_POST['StoryID'] == 'N3' || $_POST['StoryID'] == 'N4' ){
+            $_SESSION['haveKey'] = true;
+        }
+
+        //set tryDoor? bool
+        if($_POST['StoryID'] ==  ""){
+            $_SESSION['tryDoor'] = true;
+        }
+
+        //open door after grabing key
+        if(($_POST['StoryID'] == 'N3' || $_POST['StoryID'] == 'N4') && isset($_SESSION['tryDoor']) && $_SESSION['tryDoor']){
+            $_POST['StoryID'] = "";    //send to door
+        }
+
         //split posted ID by chars
         $IDar = str_split($_POST['StoryID']);
 
@@ -149,8 +189,14 @@
         }
         //show restart button if ending
         else{
+            //unset session vars
             unset($_SESSION['PastID']);
             unset($_SESSION['StoryID']);
+            unset($_SESSION['haveCard']);
+            unset($_SESSION['haveKey']);
+            unset($_SESSION['tryDoor']);
+            unset($_SESSION['flowerCnt']);
+
             echo('
             </div>
             <div  id="gamebtn"> 
