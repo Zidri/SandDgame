@@ -10,6 +10,16 @@
             $_POST['StoryID'] = "B2";           
         }
 
+        //send to P1 after O6
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "O6"){
+            $_POST['StoryID'] = "P1";           
+        }
+
+        //send to N1 after O11
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "O11"){
+            $_POST['StoryID'] = "N1";           
+        }
+
         //flower shop count
         if( $_POST['StoryID'] == 'M1' || 
             $_POST['StoryID'] == 'N2' || 
@@ -22,12 +32,13 @@
                 $_SESSION['flowerCnt']++;
             }
             else{
-                $_POST['StoryID'] = "";  //send to ending
+                $_POST['StoryID'] = "P1";  //send to ending
             }
             }
             else{
                 $_SESSION['flowerCnt'] = 1;
             }
+
         }
 
         //set haveCard? bool
@@ -47,7 +58,7 @@
 
         //open door after grabing key
         if(($_POST['StoryID'] == 'N3' || $_POST['StoryID'] == 'N4') && isset($_SESSION['tryDoor']) && $_SESSION['tryDoor']){
-            $_POST['StoryID'] = "";    //send to door
+            $_POST['StoryID'] = "O2";    //send to door
         }
 
         //split posted ID by chars
