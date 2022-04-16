@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2022 at 09:30 PM
+-- Generation Time: Apr 16, 2022 at 04:06 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -63,17 +63,39 @@ INSERT INTO `choices` (`ChoiceID`, `Options`, `StoryID`, `ChoiceStoryID`) VALUES
 (22, 'Exaggerate Report', 'H2', 'H3'),
 (23, 'Stick to Truth', 'H2', 'H22'),
 (24, 'Check on Margret and Dave', 'H6', 'H7'),
-(25, 'Not that guilty, go home', 'H6', '0'),
-(26, 'Check Flowers', 'J1', '0'),
-(27, 'Check Counter', 'J1', '0'),
-(28, 'Go to Back Room', 'J1', '0'),
+(25, 'Not that guilty, go home', 'H6', 'H16'),
+(26, 'Check Flowers', 'J1', 'K1'),
+(27, 'Check Counter', 'J1', 'N1'),
+(28, 'Go to Back Room', 'J1', 'O1'),
 (29, 'Back Outside', 'J1', 'J2'),
 (30, 'Back Outside', 'K2', 'K3'),
-(31, 'Stay in Shop', 'K2', '0'),
+(31, 'Stay in Shop', 'K2', 'M1'),
 (32, 'Use Door', 'K3', 'J2'),
 (33, 'Use Window', 'K3', 'K4'),
 (34, 'Talk to Person', 'K7', 'K8'),
-(35, 'Keep Wandering', 'K7', 'L1');
+(35, 'Keep Wandering', 'K7', 'L1'),
+(36, 'Grab Card', 'N1', 'N2'),
+(37, 'Grab Key', 'N1', 'N3'),
+(38, 'Return to Room', 'N2', 'J4'),
+(39, 'Grab Key', 'N2', 'N4'),
+(40, 'Grab Card', 'N3', 'N5'),
+(41, 'Return to Room', 'N3', 'J4'),
+(42, 'Return to Room', 'N4', 'J4'),
+(43, 'Return to Room', 'N5', 'J4'),
+(44, 'Open Door', 'O4', 'O12'),
+(45, 'Return to Main Room', 'O4', 'J4'),
+(46, 'Check Flowers', 'J4', 'K1'),
+(47, 'Check Counter', 'J4', 'N1'),
+(48, 'Go to Back Room', 'J4', 'O1'),
+(49, 'Back Outside', 'J4', 'J2'),
+(50, 'Check Flowers', 'J5', 'K1'),
+(51, 'Check Counter', 'J5', 'N1'),
+(52, 'Go to Back Room', 'J5', 'O1'),
+(53, 'Back Outside', 'J5', 'J2'),
+(55, 'Look for Key', 'O12', 'O7'),
+(56, 'Pick Lock', 'O12', 'O5'),
+(57, 'Open door', 'O1', 'O12'),
+(58, 'Explore Room', 'O1', 'O2');
 
 -- --------------------------------------------------------
 
@@ -156,6 +178,8 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('J1', 'Morgan ran straight towards the flower shop and made it inside before the villain noticed that they hadn’t escaped with Chad. Looking around, Morgan can see several displays of flowers, a counter with a register near the back, and behind the counter a curtain hanging in a doorway that seemed to lead to a back room.', 0),
 ('J2', 'Morgan leaves the shop and sees Complex fighting Dave Dogers and Morgan’s sister, Margret. In the distance the Fairness Association’s jet is approaching, so that’s where Chad got to. Morgan is called into the fray and joins the fight against Complex. They’re badly injured after a stray balcony collapses on them. They aren’t noticed until the fight ends and are removed to the Fairness Association’s medical bay.', 0),
 ('J3', 'Send to B2', 0),
+('J4', 'Returning to the main room, Morgan sees several displays of flowers, a counter with a register near the back, and behind the counter a curtain hanging in a doorway that seemed to lead to a back room.', 0),
+('J5', 'Morgan sees several displays of flowers, a counter with a register near the back, and behind the counter a curtain hanging in a doorway that seemed to lead to a back room.', 0),
 ('K1', 'There are all kinds of flowers, but Morgan only really recognizes the roses. There is a really pretty red flower with petals that seemed to spread and curl downwards that Morgan really liked. It had thin spidery bits that formed a kind of bowl shape and was probably the prettiest flower they had ever seen. Morgan couldn’t resist grabbing one.', 0),
 ('K10', 'The person looks at Morgan for a second, before replying, “I don’t believe so, and that’s the worst pickup line I’ve ever heard. What next? Are you going to tell me you must have seen me in your dreams?”', 0),
 ('K11', 'A bit upset at the rudeness of the apparent stranger, Morgan replies, “I wasn’t but now that I’ve gotten a better look I think you’re right, you look just like a monster from my nightmares.”', 0),
@@ -168,7 +192,7 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('K18', 'Morgan and Alex talk for a bit before Alex continues on their way home. Morgan stands there for a minute before remembering that they have their phone and can just get directions home.', 0),
 ('K19', 'Following the directions from their phone, Morgan arrives home and goes to sleep off their concussion, thinking about their upcoming date with Alex.', 0),
 ('K2', 'The sounds of the fight have died down, and Morgan considers going back outside and seeing if Complex has left yet.', 0),
-('K20', '<strong>Well, this could get complex: Morgan and Alex have a nice date, where Alex convinces Morgan they deserve to be treated better and Morgan decides that Alex is too much fun to not go on another date with.</strong>', 0),
+('K20', '<strong>Well, this could get complex: Morgan and Alex have a nice date, where Alex convinces Morgan they deserve to be treated better and Morgan decides that Alex is too much fun to not go on another date with.</strong>', 1),
 ('K3', 'Morgan decides to go outside', 0),
 ('K4', 'Morgan sees a window leading to the side of the shop, they try to jump through it, but in their haste forget to open it and end up knocking their head against the glass. It doesn’t break, but they do feel a bit dizzy.', 0),
 ('K5', 'Morgan opens the window and climbs out.\r\nThey’re in a side street, and the sounds of fighting are picking up again, but Morgan knows better than to try and fight with a concussion.', 0),
@@ -180,7 +204,43 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('L2', 'On the way home, feeling sick of being forgotten after fights and getting injured, Morgan decides to quit being a sidekick.', 0),
 ('L3', '<strong>Ever heard of a good landlord?: They think about how many people lose their homes in villain fights and have to sleep outside like they did last night.</strong>', 1),
 ('L4', 'Thinking of the card they have for the flower shop, they consider giving them a call and seeing if they need employees after things from the fight are repaired.', 0),
-('L5', '<strong>Time to take stalk of your life: Morgan arrives home with a plan and gets a job at a flower shop.</strong>', 1);
+('L5', '<strong>Time to take stalk of your life: Morgan arrives home with a plan and gets a job at a flower shop.</strong>', 1),
+('M1', 'Morgan stays in the shop, within minutes the fight seems to pick up again, good thing they didn’t go back out there.', 0),
+('M2', 'Jump to J5', 0),
+('N1', 'The counter has a register and some business cards, there’s also a key on a hook under the counter.', 0),
+('N2', 'Morgan grabs a card', 0),
+('N3', 'Morgan grabs the key', 0),
+('N4', 'Morgan grabs the key', 0),
+('N5', 'Morgan grabs a card', 0),
+('O1', 'Morgan walks through the curtain at the back of the room and sees several shelves with various items, including pots, ribbons, colored paper, aprons, small trowels, and boxes. At the back of the room is a door that appears to lead out of the shop.', 0),
+('O10', 'Maybe it’ll be by the counter in the front of the shop. They leave the room and check out the counter.', 0),
+('O11', 'Jump to N1', 0),
+('O12', 'Morgan tries to open the door, and it’s locked. The door has a keyhole.', 0),
+('O13', 'Jump to R1', 0),
+('O2', 'Morgan looks around the room and finds various gardening supplies, as well as things for wrapping flowers.', 0),
+('O3', 'There’s also several bags of soil, some trowels, and several aprons presumably worn by the shop\'s employees.', 0),
+('O4', 'Checking the aprons Morgan finds some leaves and dirt, but nothing useful.', 0),
+('O5', 'Morgan goes to pick the lock using a small trowel. The trowel is much too big for the lock and breaks. The tip of the trowel is now stuck in the lock. Morgan uses the remainder of the trowel to repeatedly hit the door. After hitting the door several times the room starts to shake.', 0),
+('O6', 'Jump to P1', 0),
+('O7', 'Morgan looks around the room, they check around the door, looking to see if the key is hanging nearby.', 0),
+('O8', 'When they don’t see one, they check the various shelves.', 0),
+('O9', 'They find a variety of gardening supplies and assorted things for wrapping flowers, but no key.', 0),
+('P1', 'Morgan goes to leave when an earthquake shakes the room.', 0),
+('P2', 'It’s probably the hero Rockalanche comes fighting Complex, but either way, it makes the room shake, and the ceiling is making a groaning noise that Morgan doesn’t like.', 0),
+('P3', 'Before Morgan can move to escape back outside, the building collapses on top of them.', 0),
+('P4', '<strong>Well, at least you\'re already buried: Morgan was knocked in the head by some of the debris and survived for a bit, but no one knew they were there and they died before help could arrive.</strong>', 1),
+('Q1', 'Morgan looks around the room, they check around the door, looking to see if the key is hanging nearby.', 0),
+('R1', 'Morgan tries to open the door, and it’s locked. The door has a keyhole. They remember the key from the desk and give it a try. It works! The door opens and Morgan leaves the shop.', 0),
+('R10', '“Uh, sure you can join me I guess, but call me Alex,” Complex, or rather Alex answers.', 0),
+('R11', '<strong>Really, in a grocery store?!: Morgan goes shopping with Alex and they actually have a really nice time. Morgan and Alex exchange numbers and decide to get together for brunch later in the week.</strong>', 1),
+('R2', 'The door leads to a back alley, Morgan leaves the alley and ends up a street over from the fight. Knowing Chad probably went to the Fairness Association headquarters, Morgan decides to head there.', 0),
+('R3', 'Walking towards the headquarters, Morgan sees Complex walking along the street ahead of them.  Confused, because they were sure Complex was still on the same street as the fight, Morgan cautiously approached them.', 0),
+('R4', '“Uh, Weren’t you fighting over there?” Morgan asked, gesturing towards the street the fight had been on.', 0),
+('R5', '“Yeah, I still am, but I forgot to get groceries so I’m going shopping too,” Complex replies.', 0),
+('R6', '“What do you mean you’re still fighting?”', 0),
+('R7', '“I just cloned myself, because the market is having a sale on deli meat and I want to make sandwiches tomorrow,” the villain explains.', 0),
+('R8', 'Morgan thinks that they should probably keep an eye on the villain. Even though it doesn’t look like they’re doing anything particularly villainous, Morgan still feels morally obligated to make sure it stays that way.', 0),
+('R9', '“Great, so you won’t mind if I join you! My name’s Morgan by the way, should I just call you Complex?” Morgan introduces themself.', 0);
 
 --
 -- Indexes for dumped tables
@@ -206,7 +266,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT for table `choices`
 --
 ALTER TABLE `choices`
-  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

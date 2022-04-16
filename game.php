@@ -10,6 +10,11 @@
             $_POST['StoryID'] = "B2";           
         }
 
+        //send to J5 after M2
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "M2"){
+            $_POST['StoryID'] = "J5";           
+        }
+
         //send to P1 after O6
         if(isset($_POST['StoryID']) && $_POST['StoryID'] == "O6"){
             $_POST['StoryID'] = "P1";           
@@ -20,20 +25,23 @@
             $_POST['StoryID'] = "N1";           
         }
 
+
         //flower shop count
         if( $_POST['StoryID'] == 'M1' || 
             $_POST['StoryID'] == 'N2' || 
             $_POST['StoryID'] == 'N4' || 
             $_POST['StoryID'] == 'N3' || 
-            $_POST['StoryID'] == 'N5'){
+            $_POST['StoryID'] == 'N5' ||
+            $_POST['StoryID'] == 'O4' ||
+            $_POST['StoryID'] == 'O12'){
 
             if(isset($_SESSION['flowerCnt'])){
-                if($_SESSION['flowerCnt'] > 6){
-                $_SESSION['flowerCnt']++;
-            }
-            else{
-                $_POST['StoryID'] = "P1";  //send to ending
-            }
+                if($_SESSION['flowerCnt'] == 4){
+                    $_POST['StoryID'] = "P1";  //send to ending                
+                }
+                else{
+                    $_SESSION['flowerCnt'] += 1;
+                }
             }
             else{
                 $_SESSION['flowerCnt'] = 1;
@@ -52,27 +60,30 @@
         }
 
         //set tryDoor? bool
-        if($_POST['StoryID'] ==  ""){
+        if($_POST['StoryID'] ==  'O7'){
             $_SESSION['tryDoor'] = true;
         }
 
         //open door after grabing key
         if(($_POST['StoryID'] == 'N3' || $_POST['StoryID'] == 'N4') && isset($_SESSION['tryDoor']) && $_SESSION['tryDoor']){
-            $_POST['StoryID'] = "O2";    //send to door
+            $_POST['StoryID'] = "O12";    //send to door
         }
 
-        //split posted ID by chars
-        $IDar = str_split($_POST['StoryID']);
+        //open door after if haskey
+        if($_POST['StoryID'] == 'O12' && isset($_SESSION['haveKey']) && $_SESSION['haveKey']){
+            $_POST['StoryID'] = "R1";    //send to door opening
+        }
 
-        // print_r($IDar);
+
 
         //set cnt to posted ID num
-        $_SESSION['cnt'] = intval($IDar[1]);
+        $_SESSION['cnt'] = substr($_POST['StoryID'],1);
+        
         //set alpha using posted ID letter
-        $_SESSION['alpha'] = $IDar[0];
+        $_SESSION['alpha'] = str_split($_POST['StoryID'])[0];
 
-        //reset cnt at 3 -> production only
-        if(isset($_SESSION['cnt'])/*$_SESSION['cnt']<3*/){
+        //increment cnt
+        if(isset($_SESSION['cnt'])){
             $_SESSION['cnt']++;
         }
         else{
@@ -85,7 +96,14 @@
     
     if(isset($_POST['StoryID'])){    
         //show current ID
-        echo($_POST['StoryID']);
+        echo($_POST['StoryID']."\t");
+
+        //show flower cnt
+        if(isset($_SESSION['flowerCnt'])){
+            
+            echo($_SESSION['flowerCnt']);
+        }
+
         //set prev texts so user can still view them
         if($_POST['StoryID'] != 'A1'){            
             if(isset( $_SESSION['lastcurtxt'])){
@@ -202,7 +220,6 @@
         else{
             //unset session vars
             unset($_SESSION['PastID']);
-            unset($_SESSION['StoryID']);
             unset($_SESSION['haveCard']);
             unset($_SESSION['haveKey']);
             unset($_SESSION['tryDoor']);
@@ -228,6 +245,13 @@
     }
     //if there's no storyID -> show start button
     else{
+        //unset session vars
+        unset($_SESSION['PastID']);
+        unset($_SESSION['haveCard']);
+        unset($_SESSION['haveKey']);
+        unset($_SESSION['tryDoor']);
+        unset($_SESSION['flowerCnt']);
+
         echo('
         </div>
         <div  id="gamebtn">
