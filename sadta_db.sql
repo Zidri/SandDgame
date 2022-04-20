@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2022 at 04:06 AM
+-- Generation Time: Apr 20, 2022 at 09:47 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -58,7 +58,7 @@ INSERT INTO `choices` (`ChoiceID`, `Options`, `StoryID`, `ChoiceStoryID`) VALUES
 (17, 'Go Home', 'F7', 'F8'),
 (18, 'Ignore Chad', 'E2', 'E3'),
 (19, 'Start Damage Reports', 'E2', 'H1'),
-(20, 'Go Out', 'E4', '0'),
+(20, 'Go Out', 'E4', 'S1'),
 (21, 'Stay In', 'E4', 'E5'),
 (22, 'Exaggerate Report', 'H2', 'H3'),
 (23, 'Stick to Truth', 'H2', 'H22'),
@@ -95,7 +95,15 @@ INSERT INTO `choices` (`ChoiceID`, `Options`, `StoryID`, `ChoiceStoryID`) VALUES
 (55, 'Look for Key', 'O12', 'O7'),
 (56, 'Pick Lock', 'O12', 'O5'),
 (57, 'Open door', 'O1', 'O12'),
-(58, 'Explore Room', 'O1', 'O2');
+(58, 'Explore Room', 'O1', 'O2'),
+(59, 'The Fairness Association', 'S5', 'S6'),
+(60, 'The Revengers', 'S5', 'S7'),
+(61, 'The Conundrum Corporation', 'S5', 'S7'),
+(62, 'The Terrific Trio', 'S5', 'S7'),
+(63, '“Yeah, I learned a lot about pianos when my daughter was hyper fixated on them last year, so I\'m pretty sure the answer is 1709,” Gus says.', 'S13', 'S14'),
+(64, '1807', 'S16', 'S18'),
+(65, '1709', 'S16', 'S17'),
+(66, '1608', 'S16', 'S18');
 
 -- --------------------------------------------------------
 
@@ -146,7 +154,7 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('F8', 'Morgan heads home and goes to sleep thinking of the business card Complex gave them. The villain seemed surprisingly nice, Morgan hopes they can see them again outside of a fight.', 0),
 ('F9', '<strong>This might be fun: Morgan decides to give Alex a call in the morning</strong>', 1),
 ('G1', 'Morgan goes home and showers, once they\'re no longer covered in garbage they decide not to give today the chance to get worse and go to bed.', 0),
-('G2', 'TBD', 1),
+('G2', '<strong>A Garbage Day: Morgan goes home and showers, once they\'re no longer covered in garbage they decide not to give today the chance to get worse and go to bed.</strong>', 1),
 ('H1', 'Morgan starts on the damage reports.', 0),
 ('H10', '“Hey, Margret, Dave, I felt bad that your dinner plans were ruined, so I made you some food.”', 0),
 ('H11', '“Wow, thanks so much Morgan!!” Margret exclaims.', 0),
@@ -240,7 +248,30 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('R6', '“What do you mean you’re still fighting?”', 0),
 ('R7', '“I just cloned myself, because the market is having a sale on deli meat and I want to make sandwiches tomorrow,” the villain explains.', 0),
 ('R8', 'Morgan thinks that they should probably keep an eye on the villain. Even though it doesn’t look like they’re doing anything particularly villainous, Morgan still feels morally obligated to make sure it stays that way.', 0),
-('R9', '“Great, so you won’t mind if I join you! My name’s Morgan by the way, should I just call you Complex?” Morgan introduces themself.', 0);
+('R9', '“Great, so you won’t mind if I join you! My name’s Morgan by the way, should I just call you Complex?” Morgan introduces themself.', 0),
+('S1', 'Morgan cleans up and dresses to go out. He remembers that a bar on the other side of town was doing a trivia night and decides to check it out.', 0),
+('S10', 'Oof that’s embarrassing, especially since Morgan’s a part of the Association.', 0),
+('S11', 'That was easy, though it probably helps that Morgan’s technically part of the Association.', 0),
+('S12', '“Next question, What year was the piano invented?”', 0),
+('S13', 'Gus seems to know this one, should you let him answer?', 0),
+('S14', 'Jump to correct + Gus Answers', 0),
+('S15', 'Jump to Answer (S19)', 0),
+('S16', 'Morgan wants to give the question a try.', 0),
+('S17', 'Mark wrong\r\nJump S19', 0),
+('S18', 'Mark correct\r\nJump S19', 0),
+('S19', '“The correct answer is 1709!”', 0),
+('S2', 'Once they get to the bar, they talk to a worker and realize they need a partner. In the quiz section is a bulky person in a long, dark coat sitting alone. ', 0),
+('S20', 'Jump to Reaction (S21/S22/S23)\r\n', 0),
+('S21', 'That’s rough, maybe Morgan should have let Gus answer.', 0),
+('S22', 'Thank goodness Gus knew that, Morgan sure didn’t!', 0),
+('S23', 'That was hard, jeez talk about a jump in difficulty!', 0),
+('S3', 'Morgan walks up to the bulky person in the quiz section and asks to play the quiz with them', 0),
+('S4', '“Sure, my name’s Gus, good to meet you,” Gus motions for Morgan to join them at the table as the announcer starts the trivia game.', 0),
+('S5', '“Alright, folks! We’ll start off easy! There was a major villain event earlier today, what is the name of the local team of Heros that arrived on the scene to fight the villains?\"', 0),
+('S6', 'Question 1 answered correctly\r\nJump to S8', 0),
+('S7', 'Question 1 answered wrong\r\nJump to S8', 0),
+('S8', '“The correct answer is … The Fairness Association!”', 0),
+('S9', 'Jump to Reaction (S10/S11)', 0);
 
 --
 -- Indexes for dumped tables
@@ -266,7 +297,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT for table `choices`
 --
 ALTER TABLE `choices`
-  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

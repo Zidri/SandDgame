@@ -35,6 +35,93 @@
             $_POST['StoryID'] = "H22";         
         }
 
+
+        //score trivia minigame
+        //score question 1
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S6")){
+            $_POST['TriviaQ1'] = true;
+            $_POST['StoryID'] = "S8";         
+        }
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S7")){
+            $_POST['TriviaQ1'] = false;
+            $_POST['StoryID'] = "S8";         
+        }
+        //jump to reaction to q1
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S9" && $_POST['TriviaQ1']){
+            $_POST['StoryID'] = "S11";         
+        }
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S9" && !$_POST['TriviaQ1']){
+            $_POST['StoryID'] = "S10";         
+        }
+        //jump to question 2 after wrong answer reaction
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S11" && !$_POST['TriviaQ1']){
+            $_POST['StoryID'] = "S12";         
+        }
+
+        //score question 2
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S15")){
+            $_POST['TriviaQ2'] = true;
+            $_POST['GusAns'] = true;
+            $_POST['StoryID'] = "S19";         
+        }
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S17")){
+            $_POST['TriviaQ2'] = true;
+            $_POST['GusAns'] = false;
+            $_POST['StoryID'] = "S19";         
+        }
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S18")){
+            $_POST['TriviaQ2'] = false;
+            $_POST['GusAns'] = false;
+            $_POST['StoryID'] = "S19";         
+        }
+        //jump to reaction to q2
+        //wrong
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S20" && !$_POST['TriviaQ2']){
+            $_POST['StoryID'] = "S21";         
+        }
+        //jump to question 3 after wrong answer reaction
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S22" && !$_POST['TriviaQ2']){
+            $_POST['StoryID'] = "S24";         
+        }
+        //gus answered
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S20" && $_POST['TriviaQ2']){
+            $_POST['StoryID'] = "S22";         
+        }  
+        //jump to question 3 after Gus answers reaction
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S23" && $_POST['TriviaQ2'] && $_POST['GusAns']){
+            $_POST['StoryID'] = "S24";         
+        }      
+        //right
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S20" && !$_POST['TriviaQ2']){
+            $_POST['StoryID'] = "S23";         
+        }
+
+        //check number of wrong answers
+        //all wrong
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S" && !$_POST['TriviaQ1'] && !$_POST['TriviaQ2'] && !$_POST['TriviaQ3']){
+            $_POST['StoryID'] = "S";         
+        }
+        //one right
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S" && 
+        ($_POST['TriviaQ1'] && !$_POST['TriviaQ2'] && !$_POST['TriviaQ3']) || 
+        (!$_POST['TriviaQ1'] && $_POST['TriviaQ2'] && !$_POST['TriviaQ3']) || 
+        (!$_POST['TriviaQ1'] && !$_POST['TriviaQ2'] && $_POST['TriviaQ3'])){
+            $_POST['StoryID'] = "S";         
+        }
+        //two right
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S" && 
+        ($_POST['TriviaQ1'] && $_POST['TriviaQ2'] && !$_POST['TriviaQ3']) || 
+        ($_POST['TriviaQ1'] && !$_POST['TriviaQ2'] && $_POST['TriviaQ3']) || 
+        (!$_POST['TriviaQ1'] && $_POST['TriviaQ2'] && $_POST['TriviaQ3'])){
+            $_POST['StoryID'] = "S";         
+        }
+        //all right
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S" && 
+        ($_POST['TriviaQ1'] && $_POST['TriviaQ2'] && $_POST['TriviaQ3'])){
+            $_POST['StoryID'] = "S";         
+        }
+
+
         //flower shop count
         if( $_POST['StoryID'] == 'M1' || 
             $_POST['StoryID'] == 'N2' || 
