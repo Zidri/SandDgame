@@ -25,6 +25,15 @@
             $_POST['StoryID'] = "N1";           
         }
 
+        //set talk to civilians as true
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "D1"){
+            $_SESSION['TalkCivilians'] = true;           
+        }
+
+        //send to H22 after H1 if talked to civilians
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "H1" && !isset($_SESSION['TalkCivilians'])){
+            $_POST['StoryID'] = "H22";         
+        }
 
         //flower shop count
         if( $_POST['StoryID'] == 'M1' || 
@@ -224,6 +233,7 @@
             unset($_SESSION['haveKey']);
             unset($_SESSION['tryDoor']);
             unset($_SESSION['flowerCnt']);
+            unset($_SESSION['TalkCivilians']);
 
             echo('
             </div>
