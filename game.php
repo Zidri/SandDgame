@@ -61,17 +61,17 @@
         //score question 2
         if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S15"){
             $_SESSION['TriviaQ2'] = true;
-            $_POST['GusAns'] = true;
+             $_SESSION['GusAns'] = true;
             $_POST['StoryID'] = "S19";         
         }
         if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S17"){
             $_SESSION['TriviaQ2'] = true;
-            $_POST['GusAns'] = false;
+             $_SESSION['GusAns'] = false;
             $_POST['StoryID'] = "S19";         
         }
         if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S18"){
             $_SESSION['TriviaQ2'] = false;
-            $_POST['GusAns'] = false;
+             $_SESSION['GusAns'] = false;
             $_POST['StoryID'] = "S19";         
         }
         //jump to reaction to q2
@@ -84,46 +84,70 @@
             $_POST['StoryID'] = "S24";         
         }
         //gus answered
-        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S20" && $_SESSION['TriviaQ2']){
-            $_POST['StoryID'] = "S22";         
-        }  
-        //jump to question 3 after Gus answers reaction
-        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S23" && $_SESSION['TriviaQ2'] && $_POST['GusAns']){
-            $_POST['StoryID'] = "S24";         
-        }      
+        if(isset($_SESSION['GusAns']) && $_SESSION['GusAns']){
+            if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S20" && $_SESSION['TriviaQ2']){
+                $_POST['StoryID'] = "S22";         
+            }  
+            //jump to question 3 after Gus answers reaction
+            if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S23" && $_SESSION['TriviaQ2']){
+                $_POST['StoryID'] = "S24";         
+            }
+        }
+              
         //right
         if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S20" && !$_SESSION['TriviaQ2']){
             $_POST['StoryID'] = "S23";         
         }
 
+         //score question 3
+         //right        
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S25"){
+            $_SESSION['TriviaQ3'] = true;
+            $_POST['StoryID'] = "S27";         
+        }
+        //wrong
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S26"){
+            $_SESSION['TriviaQ3'] = false;
+            $_POST['StoryID'] = "S27";         
+        }
+        
+         //jump to reaction q3
+        //wrong
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S28" && !$_SESSION['TriviaQ3']){
+            $_POST['StoryID'] = "S29";         
+        }
+        //right
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S28" && $_SESSION['TriviaQ3']){
+            $_POST['StoryID'] = "S30";         
+        }
+        //jump to ending if wrong
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S30" && !$_SESSION['TriviaQ3']){
+            $_POST['StoryID'] = "S31";         
+        }
+
         //check number of wrong answers
-        //all wrong
-        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S" && 
-        (isset($_SESSION['TriviaQ1']) && isset($_SESSION['TriviaQ2']) && isset($_SESSION['TriviaQ3'])) &&
-         !$_SESSION['TriviaQ1'] && !$_SESSION['TriviaQ2'] && !$_SESSION['TriviaQ3']){
-            $_POST['StoryID'] = "S";         
-        }
-        //one right
-        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S" && 
-        isset($_SESSION['TriviaQ1']) && isset($_SESSION['TriviaQ2']) && isset($_SESSION['TriviaQ3']) &&
-        ($_SESSION['TriviaQ1'] && !$_SESSION['TriviaQ2'] && !$_SESSION['TriviaQ3']) || 
-        (!$_SESSION['TriviaQ1'] && $_SESSION['TriviaQ2'] && !$_SESSION['TriviaQ3']) || 
-        (!$_SESSION['TriviaQ1'] && !$_SESSION['TriviaQ2'] && $_SESSION['TriviaQ3'])){
-            $_POST['StoryID'] = "S";         
-        }
-        //two right
-        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S" && 
-        (isset($_SESSION['TriviaQ1']) && isset($_SESSION['TriviaQ2']) && isset($_SESSION['TriviaQ3'])) &&
-        ($_SESSION['TriviaQ1'] && $_SESSION['TriviaQ2'] && !$_SESSION['TriviaQ3']) || 
-        ($_SESSION['TriviaQ1'] && !$_SESSION['TriviaQ2'] && $_SESSION['TriviaQ3']) || 
-        (!$_SESSION['TriviaQ1'] && $_SESSION['TriviaQ2'] && $_SESSION['TriviaQ3'])){
-            $_POST['StoryID'] = "S";         
-        }
-        //all right
-        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S" && 
-        (isset($_SESSION['TriviaQ1']) && isset($_SESSION['TriviaQ2']) && isset($_SESSION['TriviaQ3'])) && 
-        ($_SESSION['TriviaQ1'] && $_SESSION['TriviaQ2'] && $_SESSION['TriviaQ3'])){
-            $_POST['StoryID'] = "S";         
+        if(isset($_POST['StoryID']) && $_POST['StoryID'] == "S31" && 
+            isset($_SESSION['TriviaQ1']) && isset($_SESSION['TriviaQ2']) && isset($_SESSION['TriviaQ3'])){
+            //all wrong
+            if(!$_SESSION['TriviaQ1'] && !$_SESSION['TriviaQ2'] && !$_SESSION['TriviaQ3']){
+                $_POST['StoryID'] = "T1";  
+            }
+            //one right
+            if(($_SESSION['TriviaQ1'] && !$_SESSION['TriviaQ2'] && !$_SESSION['TriviaQ3']) ||
+            (!$_SESSION['TriviaQ1'] && $_SESSION['TriviaQ2'] && !$_SESSION['TriviaQ3']) ||
+            (!$_SESSION['TriviaQ1'] && !$_SESSION['TriviaQ2'] && $_SESSION['TriviaQ3'])){
+                $_POST['StoryID'] = "T3";  
+            }
+            //two right
+            if(($_SESSION['TriviaQ1'] && $_SESSION['TriviaQ2'] && !$_SESSION['TriviaQ3']) ||
+            ($_SESSION['TriviaQ1'] && !$_SESSION['TriviaQ2'] && $_SESSION['TriviaQ3']) ||
+            (!$_SESSION['TriviaQ1'] && $_SESSION['TriviaQ2'] && $_SESSION['TriviaQ3'])){
+                $_POST['StoryID'] = "T5";  
+            }
+            //all right
+            if($_SESSION['TriviaQ1'] && $_SESSION['TriviaQ2'] && $_SESSION['TriviaQ3']){
+                $_POST['StoryID'] = "T7";  
+            }
         }
 
 
@@ -197,13 +221,12 @@
     
     if(isset($_POST['StoryID'])){    
         //show current ID
-        echo($_POST['StoryID']."\t");
+        // echo($_POST['StoryID']."\t");
 
         //show flower cnt
-        if(isset($_SESSION['flowerCnt'])){
-            
-            echo($_SESSION['flowerCnt']);
-        }
+        // if(isset($_SESSION['flowerCnt'])){            
+        //     echo($_SESSION['flowerCnt']);
+        // }
 
         //set prev texts so user can still view them
         if($_POST['StoryID'] != 'A1'){            
@@ -326,6 +349,7 @@
             unset($_SESSION['tryDoor']);
             unset($_SESSION['flowerCnt']);
             unset($_SESSION['TalkCivilians']);
+            unset( $_SESSION['GusAns']);
 
             echo('
             </div>
@@ -352,7 +376,9 @@
         unset($_SESSION['haveCard']);
         unset($_SESSION['haveKey']);
         unset($_SESSION['tryDoor']);
-        unset($_SESSION['flowerCnt']);
+        unset($_SESSION['flowerCnt']);        
+        unset($_SESSION['TalkCivilians']);
+        unset( $_SESSION['GusAns']);
 
         echo('
         </div>

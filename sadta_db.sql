@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2022 at 09:47 PM
+-- Generation Time: Apr 22, 2022 at 08:54 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -100,10 +100,14 @@ INSERT INTO `choices` (`ChoiceID`, `Options`, `StoryID`, `ChoiceStoryID`) VALUES
 (60, 'The Revengers', 'S5', 'S7'),
 (61, 'The Conundrum Corporation', 'S5', 'S7'),
 (62, 'The Terrific Trio', 'S5', 'S7'),
-(63, '“Yeah, I learned a lot about pianos when my daughter was hyper fixated on them last year, so I\'m pretty sure the answer is 1709,” Gus says.', 'S13', 'S14'),
-(64, '1807', 'S16', 'S18'),
-(65, '1709', 'S16', 'S17'),
-(66, '1608', 'S16', 'S18');
+(63, 'Let Gus Answer', 'S13', 'S14'),
+(64, 'Make a Guess', 'S13', 'S16'),
+(65, '1807', 'S16', 'S18'),
+(66, '1709', 'S16', 'S17'),
+(67, '1608', 'S16', 'S18'),
+(68, 'The Hero Damage Insurance Program', 'S24', 'S25'),
+(69, 'The Villain Compensation Fund', 'S24', 'S26'),
+(70, 'The Program for Aid in Your Usual Services (PAYUS)', 'S24', 'S26');
 
 -- --------------------------------------------------------
 
@@ -254,8 +258,8 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('S11', 'That was easy, though it probably helps that Morgan’s technically part of the Association.', 0),
 ('S12', '“Next question, What year was the piano invented?”', 0),
 ('S13', 'Gus seems to know this one, should you let him answer?', 0),
-('S14', 'Jump to correct + Gus Answers', 0),
-('S15', 'Jump to Answer (S19)', 0),
+('S14', '“Yeah, I learned a lot about pianos when my daughter was hyper fixated on them last year, so I\'m pretty sure the answer is 1709,” Gus says.', 0),
+('S15', 'Mark Gus Answers Jump to Answer (S20)', 0),
 ('S16', 'Morgan wants to give the question a try.', 0),
 ('S17', 'Mark wrong\r\nJump S19', 0),
 ('S18', 'Mark correct\r\nJump S19', 0),
@@ -265,13 +269,29 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('S21', 'That’s rough, maybe Morgan should have let Gus answer.', 0),
 ('S22', 'Thank goodness Gus knew that, Morgan sure didn’t!', 0),
 ('S23', 'That was hard, jeez talk about a jump in difficulty!', 0),
+('S24', '“Last question! What is the name of the program that compensates civilians for damage done during villain fights?”', 0),
+('S25', 'Mark correct\r\nJump S27', 0),
+('S26', 'Mark wrong\r\nJump S27', 0),
+('S27', '“The correct answer is The Hero Damage Insurance Program!”', 0),
+('S28', 'Jump to Reaction (S29/S30)', 0),
+('S29', 'That was rough, especially since, as a sidekick Morgan doesn’t qualify for any aid.', 0),
 ('S3', 'Morgan walks up to the bulky person in the quiz section and asks to play the quiz with them', 0),
+('S30', 'Morgan’s glad they remembered!', 0),
+('S31', 'Jump to Ending (T1/T3/T5/T7)', 0),
 ('S4', '“Sure, my name’s Gus, good to meet you,” Gus motions for Morgan to join them at the table as the announcer starts the trivia game.', 0),
 ('S5', '“Alright, folks! We’ll start off easy! There was a major villain event earlier today, what is the name of the local team of Heros that arrived on the scene to fight the villains?\"', 0),
 ('S6', 'Question 1 answered correctly\r\nJump to S8', 0),
 ('S7', 'Question 1 answered wrong\r\nJump to S8', 0),
 ('S8', '“The correct answer is … The Fairness Association!”', 0),
-('S9', 'Jump to Reaction (S10/S11)', 0);
+('S9', 'Jump to Reaction (S10/S11)', 0),
+('T1', 'Morgan didn’t get any right, and also didn’t let Gus answer any. Morgan might have had a few too many drinks, by the time they decide to go back home.', 0),
+('T2', '<strong>What a Failure: The next day Morgan wakes up and decides to stay in bed, yesterday was bad enough and they don’t want to give today the chance to go that poorly.</strong>', 1),
+('T3', 'Morgan and Gus only got one answer right, but they had a nice time. They spend a bit talking about Gus’s daughter Emily and Morgan’s life as a sidekick.', 0),
+('T4', '<strong>Nice Try: When Morgan goes home and heads to bed, they do so knowing they’ve made the best of a bad day.</strong', 1),
+('T5', 'Not Bad, Morgan and Gus didn’t win, but they didn’t do too bad either. They chat for a bit and Morgan learns that Gus has a daughter named Emily. They also learn that Gus is a stay-at-home dad, and his partner works for Rex Ruther as a lab scientist.', 0),
+('T6', '<strong>Save a Bad Day: Morgan goes home after having a nice time at the bar. They feel like they managed to save a bad day and make a new friend.</strong>', 1),
+('T7', 'Morgan and Gus won, and they both got a $100 cash prize! They chat together for a while and Morgan learns about Gus’s daughter and his partner Jay who works as a lab scientist in one of Rex Ruther’s labs.', 0),
+('T8', '<strong>Things are Looking Up: When Morgan goes home at the end of the night they’re glad they went out tonight. They saved a bad day, made a new friend, and Gus even invited them to dinner with their Partner later in the week.</strong> ', 1);
 
 --
 -- Indexes for dumped tables
@@ -297,7 +317,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT for table `choices`
 --
 ALTER TABLE `choices`
-  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
