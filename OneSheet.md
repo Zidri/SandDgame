@@ -19,4 +19,4 @@ Survive encounters with an all-powerful villain
 Escape The Chadster
 
 Similar Competitive Products
-Hitchhiker’s Guide to the Galaxy Game, Monster Prom, Doki Doki Literature Club
+Hitchhiker’s Guide to the Galaxy Game, Monster Prom, Doki Doki Literature Club, Kyle is Famous
