@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2022 at 08:54 PM
+-- Generation Time: May 02, 2022 at 03:02 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -129,7 +129,7 @@ INSERT INTO `story` (`StoryID`, `StoryText`, `StoryEnd`) VALUES
 ('A1', 'In a world where superpowers exist, heroes and villains are ranked by danger level. S-tier being effectively undefeatable, followed by A, B, C, D, E, and F-tier being regular criminals without powers. Morgan is an E-tier sidekick working for their brother, the A-tier hero The Chadster.', 0),
 ('A2', 'Morgan and Chad are in the Big City, Chad is fighting the S-tier villain Complex… It is not going well. After a particularly rough hit, Chad decides to retreat. Unfortunately, he leaves without Morgan. Just as Morgan goes to leave, Complex shoots a laser from their eyes that hits to Morgan’s right. Where should they go? To the left is an alley, to the right the main road, straight leads to a flower shop, and behind them past Complex is the subway.\r\n', 0),
 ('A3', 'Morgan runs into the alley. Looking around they see a large dumpster on the left, some cardboard and scraps to the right, and straight ahead is a gate that blocks their path. Outside the alley is a loud crashing sound as other heroes arrive to fight Complex.', 0),
-('B1', 'Morgan leaves the alley and sees Complex fighting Dave Dogers and Morgan’s sister, Margret. In the distance the Fairness Association’s jet is approaching, so that’s where Chad got to. Morgan is called into the fray and joins the fight against Complex. They’re badly injured after a stray balcony collapses on them. They aren’t noticed until the fight ends and are removed to the Fairness Association’s medical bay.\r\n', 0),
+('B1', 'Morgan leaves the alley and sees Complex fighting Dave Dogers and Morgan’s sister, Margret. In the distance the Fairness Association’s jet is approaching, so that’s where Chad got to. Morgan is called into the fray and joins the fight against Complex; they’re badly injured after a stray balcony collapses on them. They aren’t noticed until the fight ends and are removed to the Fairness Association’s medical bay.\r\n', 0),
 ('B2', 'Morgan is bedridden for several months and continues to be Chad’s sidekick.', 0),
 ('B3', '<strong>Eh, could be worse… I guess? maybe?: Morgan remains a sidekick</strong>', 1),
 ('C1', 'Morgan climbs the dumpster and moves to jump part-way up the gate. Before they can push off, the lid gives way under their weight and they fall into the trash. Now covered in garbage, they climb out of the dumpster and push off the edge so they can reach the top of the gate. They make it this time and work their way over the gate. Just as they reach the other side a stray laser shoots down the alley. It doesn’t hit Morgan, but it does startle them into losing their footing, and they fall to the ground. Sore and covered in garbage, they make their way back to Chad’s base.', 0),
@@ -317,7 +317,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT for table `choices`
 --
 ALTER TABLE `choices`
-  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `ChoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
